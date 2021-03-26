@@ -1,7 +1,8 @@
+import styles from './logo.module.css';
 
 const Logo = () => {
     return (
-        <h2>Logg</h2>
+        <div className={styles.logo}>Sonic Blog</div>
     )
 }
 
