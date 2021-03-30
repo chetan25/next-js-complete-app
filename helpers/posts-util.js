@@ -6,14 +6,14 @@ import matter from 'gray-matter';
 const postDirPath = path.join(process.cwd(), 'content', 'posts');
 
 
-const getPostData = (fileName) => {
-   const filePath = path.join(postDirPath, fileName);
+export const getPostData = (postIdentifier) => {
+   const slug = postIdentifier.replace(/\.md$/, '');
+
+   const filePath = path.join(postDirPath, `${slug}.md`);
    const fileContent = fs.readFileSync(filePath, 'utf-8');
    
    // data is meta data and content is the markdown content
    const {data, content} = matter(fileContent);
-
-   const slug = fileName.replace(/\.md$/, '');
 
    const postData = {
       slug: slug,
@@ -24,8 +24,12 @@ const getPostData = (fileName) => {
     return postData;
 };
 
+export const getAllPostFiles = () => {
+    return fs.readdirSync(postDirPath);
+};
+
 export const getAllPosts = () => {
-   const postFiles = fs.readdirSync(postDirPath);
+   const postFiles = getAllPostFiles();
    const postsData = postFiles.map(file => {
        return getPostData(file);
    });
