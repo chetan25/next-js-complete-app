@@ -15,10 +15,10 @@ module.exports = (phase) => {
     if (phase === PHASE_DEVELOPMENT_SERVER) {
         return {
             env: {
-                mongodb_username: 'blog_user',
-                mongodb_password: 'bloguser1234',
-                mongodb_cluster: 'cluster0',
-                mongodb_database: 'blog-site'
+                mongodb_username: '',
+                mongodb_password: '',
+                mongodb_cluster: '',
+                mongodb_database: ''
             }   
         }
     }
@@ -26,10 +26,9 @@ module.exports = (phase) => {
     // this is not in dev mode, we could pass in different db credentials
     return {
         env: {
-            mongodb_username: 'blog_user',
-            mongodb_password: 'bloguser1234',
-            mongodb_cluster: 'cluster0',
-            mongodb_database: 'blog-site'
+            mongodb_password: '',
+            mongodb_cluster: '',
+            mongodb_database: ''
         }   
     }
 }
